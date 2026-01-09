@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Furniture AR</title>
+
+  <script type="module"
+    src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+  </script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+    }
+
+    model-viewer {
+      width: 100vw;
+      height: 100vh;   /* 🔴 REQUIRED */
+    }
+
+    .panel {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.95);
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      text-align: center;
+      z-index: 10;
+    }
+
+    button {
+      margin: 4px;
+      padding: 8px 12px;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      background: #fff;
+    }
+  </style>
+</head>
+
+<body>
+
+<model-viewer
+  id="viewer"
+  src="chair1.glb"
+  ar
+  ar-modes="scene-viewer webxr"
+  camera-controls
+  shadow-intensity="1"
+  exposure="1"
+  placement="floor"
+  interaction-prompt="auto">
+</model-viewer>
+
+<div class="panel">
+  <div><b>Chairs</b></div>
+  <button onclick="loadModel('chair1.glb')">Chair 1</button>
+  <button onclick="loadModel('chair2.glb')">Chair 2</button>
+  <button onclick="loadModel('chair3.glb')">Chair 3</button>
+
+  <div style="margin-top:8px;"><b>Sofas</b></div>
+  <button onclick="loadModel('sofa1.glb')">Sofa 1</button>
+  <button onclick="loadModel('sofa2.glb')">Sofa 2</button>
+  <button onclick="loadModel('sofa3.glb')">Sofa 3</button>
+
+  <div style="margin-top:8px;"><b>Beds</b></div>
+  <button onclick="loadModel('bed1.glb')">Bed 1</button>
+  <button onclick="loadModel('bed2.glb')">Bed 2</button>
+  <button onclick="loadModel('bed3.glb')">Bed 3</button>
+</div>
+
+<script>
+  function loadModel(modelPath) {
+    const viewer = document.getElementById('viewer');
+    viewer.src = modelPath;
+  }
+</script>
+
+</body>
+</html>
